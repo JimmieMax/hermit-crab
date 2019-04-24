@@ -1,0 +1,19 @@
+{
+  "name": "hermit-crab",
+  "version": "1.0.0",
+  "description": "try new things",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JimmieMax/hermit-crab.git"
+  },
+  "author": "Jimmie",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JimmieMax/hermit-crab/issues"
+  },
+  "homepage": "https://github.com/JimmieMax/hermit-crab#readme"
+}
