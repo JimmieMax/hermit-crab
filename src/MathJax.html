@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="dns-prefetch" href="//cdn.mathjax.org" />
+    <title>MathJax Demo</title>
+    <style>
+        .MathJax {
+            outline: 0;
+        }
+
+        .MathJax span {
+            /* font-size: 15px; */
+        }
+
+        code {
+            background-color: #c1c1c1;
+            display: block;
+        }
+
+        .view {
+            background-color: #d8d8d8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <section>
+        <h4>1.基础知识</h4>
+        <code>
+            1. $a$<br>
+            2. $b$<br>
+            3. $c^{2} = a^{2} + b^{2}$<br>
+            4. $$ c^{2}=a^{2}+b^{2}$$<br>
+            5. $\epsilon > 0$<br>
+            6. $\lim_{n \to \infty}\sum_{k=1}^n\frac{1}{k^2}=\frac{\pi^2}{6}$<br>
+            7. $$\lim_{n \to \infty}\sum_{k=1}^n\frac{1}{k^2}=\frac{\pi^2}{6}$$<br>
+            8. $\forall x\in\mathbf{R}:\qquad x^2\geq 0$<br>
+            9. $x^2 \geq 0 \qquad \textrm{for all} x \in \mathbf{R}$<br>
+            10. $x^2 \geq 0 \qquad \textrm{for all} x \in \mathbb{R}$<br>
+        </code>
+        <br>
+        <div class="view">
+            1. $a$<br>
+            2. $b$<br>
+            3. $c^{2} = a^{2} + b^{2}$<br>
+            4. $$ c^{2}=a^{2}+b^{2}$$<br>
+            5. $\epsilon > 0$<br>
+            6. $\lim_{n \to \infty}\sum_{k=1}^n\frac{1}{k^2}=\frac{\pi^2}{6}$<br>
+            7. $$\lim_{n \to \infty}\sum_{k=1}^n\frac{1}{k^2}=\frac{\pi^2}{6}$$<br>
+            8. $\forall x\in\mathbf{R}:\qquad x^2\geq 0$<br>
+            9. $x^2 \geq 0 \qquad \textrm{for all} x \in \mathbf{R}$<br>
+            10. $x^2 \geq 0 \qquad \textrm{for all} x \in \mathbb{R}$
+        </div>
+    </section>
+
+    <section>
+        <h4>2.数学模式中的分组</h4>
+        <code>
+            1. $a^x+y \neq a^{x+y}$
+        </code>
+        <br>
+        <div class="view">
+            1. $a^x+y \neq a^{x+y}$
+        </div>
+    </section>
+
+    <section>
+        <h4>3.建立数学公式模块</h4>
+        <code>
+            1. $a^x + y \neq a^{x+y} $
+            <br>2. $\lambda  , \xi , \pi , \mu , \phi , \omega $
+            <br>3. $a_{1} \qquad x^2 \qquad e^{-at} \qquad  a_{ij}^{3} \qquad e^{x^2} \neq {e^x}^2$
+            <br>4. $\sqrt{x} \qquad \sqrt{x^2 + \sqrt{y}} \qquad \sqrt[3]{2} \qquad \surd[x^2 + y^2]$
+            <br>5. $\overline{m+n} \qquad \underline{m+n}$
+            <br>6. $\underbrace{a+b+\cdots + z}$
+            <br>7. $y = x^2 \qquad y' = 2x \qquad y'' = 2$
+            <br>8. $\vec a \qquad \overrightarrow{AB} \qquad \overleftarrow{ab}$
+            <br>9. $v = {\sigma}_1\cdot {\sigma}_2{\tau}_1 \cdot {\tau}_2$ 
+            <br>10. $$\lim_{x \to 0}\frac{\sin x}{x} = 1$$
+            <br>11. $1\frac{1}{2}hours \qquad \frac{x^2}{k + 1} \qquad x^{\frac{2}{k + 1}} \qquad x^{1/2}$
+            <br>12. ${n \choose k} \qquad {x \atop y+2}$
+            <br>13. $\int f_N(x) \stackrel {!}{=} 1$
+            <br>14. $$\sum_{i = 1}^{n} \qquad \int_0^{\frac{\pi}{2}} \qquad \prod_\epsilon$$
+            <br>15. $a,b,c \neq \{a,b,c\}$
+            <br>16. $1 + \left (\frac {1}{1 - x^2}\right)^3$
+            <br>17. $\Big( (x + 1) (x + 1) \Big)^2 $
+            <br>18. $\big(  \Big(  \bigg(  \Bigg($
+            <br>19. $\big\}  \Big\}  \bigg\}  \Bigg\}$
+            <br>20. $\big\|  \Big\|  \bigg\|  \Bigg\|$
+            <br>21. $x_1,\ldots , x_n \qquad x_1+\cdots + x_n \qquad {x_1  \qquad x_n \choose x_1 \ddots   x_n}$
+        </code>
+        <br>
+        <div class="view">
+            1. $a^x + y \neq a^{x+y} $
+            <br>2. $\lambda , \xi , \pi , \mu , \phi , \omega $
+            <br>3. $a_{1} \qquad x^2 \qquad e^{-at} \qquad a_{ij}^{3} \qquad e^{x^2} \neq {e^x}^2$
+            <br>4. $\sqrt{x} \qquad \sqrt{x^2 + \sqrt{y}} \qquad \sqrt[3]{2} \qquad \surd[x^2 + y^2]$
+            <br>5. $\overline{m+n} \qquad \underline{m+n}$
+            <br>6. $\underbrace{a+b+\cdots + z}$
+            <br>7. $y = x^2 \qquad y' = 2x \qquad y'' = 2$
+            <br>8. $\vec a \qquad \overrightarrow{AB} \qquad \overleftarrow{ab}$
+            <br>9. $v = {\sigma}_1\cdot {\sigma}_2{\tau}_1 \cdot {\tau}_2$
+            <br>10. $$\lim_{x \to 0}\frac{\sin x}{x} = 1$$
+            <br>11. $1\frac{1}{2}hours \qquad \frac{x^2}{k + 1} \qquad x^{\frac{2}{k + 1}} \qquad x^{1/2}$
+            <br>12. ${n \choose k} \qquad {x \atop y+2}$
+            <br>13. $\int f_N(x) \stackrel {!}{=} 1$
+            <br>14. $$\sum_{i = 1}^{n} \qquad \int_0^{\frac{\pi}{2}} \qquad \prod_\epsilon$$
+            <br>15. $a,b,c \neq \{a,b,c\}$
+            <br>16. $1 + \left (\frac {1}{1 - x^2}\right)^3$
+            <br>17. $\Big( (x + 1) (x + 1) \Big)^2 $
+            <br>18. $\big( \Big( \bigg( \Bigg($
+            <br>19. $\big\} \Big\} \bigg\} \Bigg\}$
+            <br>20. $\big\| \Big\| \bigg\| \Bigg\|$
+            <br>21. $x_1,\ldots , x_n \qquad x_1+\cdots + x_n \qquad {x_1 \qquad x_n \choose x_1 \ddots x_n}$
+        </div>
+    </section>
+
+    <section>
+        <h4>4.数学空格</h4>
+        <code>
+            1. $\iint_{D} g(x,y)dxdy \qquad \int\!\!\!\int_{D}g(x,y)dxdy \qquad \int\int_{D} g(x,y)dxdy$
+            <br>2. $\int_{D} \, dxdy$
+        </code>
+        <br>
+        <div class="view">
+            1. $\iint_{D} g(x,y)dxdy \qquad \int\!\!\!\int_{D}g(x,y)dxdy \qquad \int\int_{D} g(x,y)dxdy$
+            <br>2. $\int_{D} \, dxdy$
+        </div>
+    </section>
+
+    <section>
+        <h4>5.垂直对齐</h4>
+        <code>
+                1. $$\mathbf{X} = \left( \begin{array}{cccc}
+                <br>x_{11} & x_{12} & \ldots \\
+                <br>x_{21} & x_{22} & \ldots \\
+                <br>\vdots & \vdots & \ddots x
+                <br>\end{array} \right) $$
+    
+                <br>2. $$y = \left\{ \begin{array}{ll}
+                <br>a & \textrm{if $d>c$}\\
+                <br>b+x & \textrm{in the morning}\\
+                <br>l & \textrm{all day long}
+                <br>\end{array} \right.$$
+    
+                <br>3. $$\left( \begin{array}{c|c}
+                <br>1 & 2 \\
+                <br>\hline 3 & 4
+                <br>\end{array} \right)$$
+    
+                <br>4. $$\begin{eqnarray}
+                <br>f(x) & = & \cos x \\
+                <br>f'(x) & = & -\sin x \\
+                <br>\int_{0}^{x} f(y)dy &
+                <br>= & \sin x
+                <br>\end{eqnarray}$$
+    
+                <br>5. $$\begin{eqnarray}
+                <br>\sin x & = & x -\frac{x^{3}}{3!} + \frac{x^{5}}{5!}-\\
+                <br>& &-\frac{x^{7}}{7!}+{}\cdots
+                <br>\end{eqnarray}$$
+    
+                <br>6. $$\begin{eqnarray}
+                <br>{ \cos x = 1
+                <br>-\frac{x^{2}}{2!} +{} }
+                <br>\nonumber\\
+                <br>& & {}+\frac{x^{4}}{4!}
+                <br>-\frac{x^{6}}{6!}+{}\cdots
+                <br>\end{eqnarray}$$
+    
+                <br>7. $$\begin{matrix}
+                <br>1 & 0 & 0 \\
+                <br>0 & 1 & 0 \\
+                <br>0 & 0 & 1 \\
+                <br>\end{matrix} $$
+                <br>矩阵边框在起始、结束标记处用下列词替换matrix
+                <br>- pmatrix：小括号边框
+                <br>- bmatrix：中括号边框
+                <br>- Bmatrix：大括号边框
+                <br>- vmatrix：单竖线边框
+                <br>- Vmatrix：双竖线边框
+    
+                <br>8. $$\begin{array}{c|lll}
+                <br>{↓}&{a}&{b}&{c}\\
+                <br>\hline
+                <br>{R_1}&{c}&{b}&{a}\\
+                <br>{R_2}&{b}&{c}&{c}\\
+                <br>\end{array}$$
+                <br>阵列
+                <br>需要array环境：起始、结束处以{array}声明
+                <br>对齐方式：在{array}后以{}逐行统一声明
+                <br>- 左对齐：l；居中：c；右对齐：r
+                <br>- 竖直线：在声明对齐方式时，插入|建立竖直线
+                <br>插入水平线：\hline
+    
+                <br>9. $$\begin{cases}
+                <br>a_1x+b_1y+c_1z=d_1\\
+                <br>a_2x+b_2y+c_2z=d_2\\
+                <br>a_3x+b_3y+c_3z=d_3\\
+                <br>\end{cases}
+                <br>$$
+                <br>方程组，\begin{cases} \end{cases}
+                <br>$$\left\{\begin{array}
+                <br>a_1x+b_1y+c_1z=d_1\\
+                <br>a_2x+b_2y+c_2z=d_2\\
+                <br>a_3x+b_3y+c_3z=d_3\\
+                <br>\end{array}\right.$$
+        </code>
+        <br>
+        <div class="view">
+            1. $$\mathbf{X} = \left( \begin{array}{cccc}
+            <br>x_{11} & x_{12} & \ldots \\
+            <br>x_{21} & x_{22} & \ldots \\
+            <br>\vdots & \vdots & \ddots x
+            <br>\end{array} \right) $$
+
+            <br>2. $$y = \left\{ \begin{array}{ll}
+            <br>a & \textrm{if $d>c$}\\
+            <br>b+x & \textrm{in the morning}\\
+            <br>l & \textrm{all day long}
+            <br>\end{array} \right.$$
+
+            <br>3. $$\left( \begin{array}{c|c}
+            <br>1 & 2 \\
+            <br>\hline 3 & 4
+            <br>\end{array} \right)$$
+
+            <br>4. $$\begin{eqnarray}
+            <br>f(x) & = & \cos x \\
+            <br>f'(x) & = & -\sin x \\
+            <br>\int_{0}^{x} f(y)dy &
+            <br>= & \sin x
+            <br>\end{eqnarray}$$
+
+            <br>5. $$\begin{eqnarray}
+            <br>\sin x & = & x -\frac{x^{3}}{3!} + \frac{x^{5}}{5!}-\\
+            <br>& &-\frac{x^{7}}{7!}+{}\cdots
+            <br>\end{eqnarray}$$
+
+            <br>6. $$\begin{eqnarray}
+            <br>{ \cos x = 1
+            <br>-\frac{x^{2}}{2!} +{} }
+            <br>\nonumber\\
+            <br>& & {}+\frac{x^{4}}{4!}
+            <br>-\frac{x^{6}}{6!}+{}\cdots
+            <br>\end{eqnarray}$$
+
+            <br>7. $$\begin{matrix}
+            <br>1 & 0 & 0 \\
+            <br>0 & 1 & 0 \\
+            <br>0 & 0 & 1 \\
+            <br>\end{matrix} $$
+            <br>矩阵边框在起始、结束标记处用下列词替换matrix
+            <br>- pmatrix：小括号边框
+            <br>- bmatrix：中括号边框
+            <br>- Bmatrix：大括号边框
+            <br>- vmatrix：单竖线边框
+            <br>- Vmatrix：双竖线边框
+
+            <br>8. $$\begin{array}{c|lll}
+            <br>{↓}&{a}&{b}&{c}\\
+            <br>\hline
+            <br>{R_1}&{c}&{b}&{a}\\
+            <br>{R_2}&{b}&{c}&{c}\\
+            <br>\end{array}$$
+            <br>阵列
+            <br>需要array环境：起始、结束处以{array}声明
+            <br>对齐方式：在{array}后以{}逐行统一声明
+            <br>- 左对齐：l；居中：c；右对齐：r
+            <br>- 竖直线：在声明对齐方式时，插入|建立竖直线
+            <br>插入水平线：\hline
+
+            <br>9. $$\begin{cases}
+            <br>a_1x+b_1y+c_1z=d_1\\
+            <br>a_2x+b_2y+c_2z=d_2\\
+            <br>a_3x+b_3y+c_3z=d_3\\
+            <br>\end{cases}
+            <br>$$
+            <br>方程组，\begin{cases} \end{cases}
+            <br>$$\left\{\begin{array}
+            <br>a_1x+b_1y+c_1z=d_1\\
+            <br>a_2x+b_2y+c_2z=d_2\\
+            <br>a_3x+b_3y+c_3z=d_3\\
+            <br>\end{array}\right.$$
+        </div>
+    </section>
+
+    <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                showProcessingMessages: false,
+                messageStyle: "none",
+                extensions: ["tex2jax.js"],
+                jax: ["input/TeX", "output/HTML-CSS"],
+                tex2jax: {
+                    inlineMath:  [ ["$", "$"] ],
+                    displayMath: [ ["$$","$$"] ],
+                    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
+                    ignoreClass:"code-math"
+                },
+                "HTML-CSS": {
+                    availableFonts: ["STIX","TeX"],
+                    showMathMenu: false
+                }
+            });
+            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+            </script>
+    <script src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</body>
+
+</html>
