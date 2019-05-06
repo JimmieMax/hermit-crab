@@ -30,6 +30,26 @@
 <body>
 
     <section>
+        <h4>Test</h4>
+        <code>\parallel</code>
+        <br>
+        <div class="view">
+            $3x+5&gt;0$
+        </div>
+        <div class="view">
+            $\because$
+            $\sqrt{2}$
+            $ \left(\dfrac{25}{2 }+\dfrac{25}{4 }\mathrm \pi\right) $
+        </div>
+        <div class="view" id="parallel-undone">
+            $a \parallel b c \parallel d$
+        </div>
+        <div class="view" id="parallel-done">
+            $a \parallel b c \parallel d$
+        </div>
+    </section>
+
+    <section>
         <h4>1.基础知识</h4>
         <code>
             1. $a$<br>
@@ -290,6 +310,78 @@
         </div>
     </section>
 
+    <script>
+        const result = {
+            "type": 3,
+            "homeworkId": 12289,
+            "homeworkName": "手工组卷",
+            "homeworkSubName": "",
+            "classNodeList": [
+                {
+                    "classId": 0,
+                    "className": "答题卡组卷",
+                    "count": 1
+                }
+            ],
+            "studentList": null,
+            "questionNodeList": [
+                {
+                    "questionId": "222378",
+                    "content": {
+                        "difficulty": 3,
+                        "body": {
+                            "questions": [
+                                {
+                                    "answer": {
+                                        "type": 2,
+                                        "items": "任取甲机床的 \\( 3 \\) 件产品中恰有 \\( 2 \\) 件正品的概率为\\[{P_3}\\left(2\\right) = {\\mathrm{C}}_3^2 \\times {0.9^2} \\times 0.1 = 0.243.\\]"
+                                    },
+                                    "type": 8,
+                                    "analysis": {
+                                        "enabled": 0
+                                    },
+                                    "qid": "203da0869f1b4c85b6a66fee272aa000",
+                                    "stem": {
+                                        "options": {},
+                                        "body": "从甲机床生产的产品中任取 \\( 3 \\) 件，求其中恰有 \\( 2 \\) 件正品的概率（用数字作答）；"
+                                    }
+                                },
+                                {
+                                    "answer": {
+                                        "type": 2,
+                                        "items": "记\"任取甲机床的 \\( 1 \\) 件产品是正品\"为事件 \\(A\\)，\"任取乙机床的 \\( 1 \\) 件产品是正品\"为事件 \\(B\\)．\n则任取甲、乙两台机床的产品各 \\( 1 \\) 件，其中至少 \\( 1 \\) 件正品的概率为\\[P\\left(A\\cdot B\\right) + P\\left(A\\cdot \\overline B\\right) + P\\left(\\overline A\\cdot B\\right) = 0.9 \\times 0.95 + 0.9 \\times 0.05 + 0.1 \\times 0.95 = 0.995.\\]"
+                                    },
+                                    "type": 8,
+                                    "analysis": {
+                                        "enabled": 0
+                                    },
+                                    "qid": "8eca7f023578424bb3ea5c1c4d68e899",
+                                    "stem": {
+                                        "options": {},
+                                        "body": "从甲、乙两台机床生产的产品中各任取 \\( 1 \\) 件，求其中至少有 \\( 1 \\) 件正品的概率（用数字作答）．"
+                                    }
+                                }
+                            ],
+                            "stem": {
+                                "body": "甲、乙两台机床相互没有影响地生产某种产品，甲机床产品的正品率是 \\( 0.9 \\)，乙机床产品的正品率是 \\( 0.95 \\)．"
+                            }
+                        },
+                        "type": 9,
+                        "outId": "49574f986c96452fa6b49f472346daaa"
+                    },
+                    "logicIndex": 1
+                }
+            ]
+        }
+        const section = document.createElement('section');
+        section.innerText = result.questionNodeList[0].content.body.questions[0].answer.items
+        document.body.appendChild(section);
+
+        const origin = `$a \\parallel b , c \\parallel d$`;
+        const done = origin.replace(/\\parallel/g, '//');
+        document.getElementById('parallel-undone').innerText = origin;
+        document.getElementById('parallel-done').innerText = done;
+    </script>
     <script type="text/x-mathjax-config">
             MathJax.Hub.Config({
                 showProcessingMessages: false,
@@ -297,8 +389,8 @@
                 extensions: ["tex2jax.js"],
                 jax: ["input/TeX", "output/HTML-CSS"],
                 tex2jax: {
-                    inlineMath:  [ ["$", "$"] ],
-                    displayMath: [ ["$$","$$"] ],
+                    inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                    displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
                     skipTags: ['script', 'noscript', 'style', 'textarea', 'pre','code','a'],
                     ignoreClass:"code-math"
                 },

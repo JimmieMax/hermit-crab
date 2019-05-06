@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.css"
+        integrity="sha384-b/NoaeRXkMxyKcrDw2KtVtYKkVg3dA0rTRgLoV7W2df3MzeR1eHLTi+l4//4fMwk" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.js"
+        integrity="sha384-ern5NCRqs6nJ/a4Ik0nB9hnKVH5HwV2XRUYdQl09OB/vvd1Lmmqbg1Mh+mYUclXx"
+        crossorigin="anonymous"></script>
+    <title>KaTex</title>
+</head>
+
+<body>
+    <h4>1.Call katex.render with a TeX expression and a DOM element to render into:</h4>
+    <div id="basic"></div>
+    <h4>2.To avoid escaping the backslash (double backslash), you can use String.raw (but beware that ${, \u and \x may
+        still need escaping):</h4>
+    <div id="stringRow"></div>
+    <h4>3.Server-side rendering or rendering to a string</h4>
+    <P>To generate HTML on the server or to generate an HTML string of the rendered math, you can use
+        katex.renderToString:</P>
+    <div id="Html"></div>
+    <script>
+        window.onload = () => {
+            katex.render("c = \\pm\\sqrt{a^2 + b^2}", document.querySelector('#basic'), {
+                throwOnError: false
+            });
+            katex.render(String.raw`c = \pm\sqrt{a^2 + b^2}`, document.querySelector('#stringRow'), {
+                throwOnError: false
+            });
+            const html = katex.renderToString("c = \\pm\\sqrt{a^2 + b^2}", {
+                throwOnError: false
+            });
+            document.querySelector('#Html').innerHTML = html;
+            
+            const texString = `c = \\pm\\sqrt{a^2 + b^2}}`;
+
+            try {
+                katex.renderToString(texString);
+            } catch (e) {
+                if (e instanceof katex.ParseError) {
+                    // KaTeX can't parse the expression
+                    const htmlErr = ("Error in LaTeX '" + texString + "': " + e.message)
+                        .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    console.log('%c '+htmlErr,'color:#f00;')
+                } else {
+                    throw e;  // other error
+                }
+            }
+        }  
+    </script>
+</body>
+
+</html>
