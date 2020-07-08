@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body onload="main()">
+    <canvas id="canvas" width="400" height="400"></canvas>
+    <script>// 顶点着色器程序
+        var VSHADER_SOURCE =
+            'void main() {\n' +
+            '  gl_Position = vec4(0.0, 0.0, 0.0, 1.0);\n' + // Set the vertex coordinates of the point
+            '  gl_PointSize = 10.0;\n' +                    // Set the point size
+            '}\n';
+
+        // 片元着色器程序
+        var FSHADER_SOURCE =
+            'void main() {\n' +
+            '  gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);\n' + // Set the point color
+            '}\n';
+
+        function main() {
+            // 获取 <canvas> 元素
+            var canvas = document.getElementById('canvas');
+
+            const gl = canvas.getContext("webgl");
+            
+            gl.clearColor(0.0, 0.0, 1.0, 1.0);
+
+            gl.clear(gl.COLOR_BUFFER_BIT);  
+        }
+    </script>
+</body>
+
+</html>

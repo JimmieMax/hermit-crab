@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .aaa:before{
+            content: "";
+        }
+    </style>
+</head>
+
+<body style="position: relative">
+    <div><span></span></div>
+    <div class="aaa">
+        <div style="float: left; height: 100; background-color: red;"></div>
+    </div>
+    <div class="bbb"></div>
+    <!-- <img style="position: absolute"
+        src="http://school-tiku.oss-cn-shanghai.aliyuncs.com/exercize/upload2205eab9-c2a1-4a01-9573-a29268cdd0cc.jpg"
+        onclick="download('http://preview.21cnjy.net/files/56/0c/560c4fd4088245bee7a6b42a021d5aca.mp3','diy')"
+        alt=""> -->
+    <script>
+        //url:文件地址 filename:想要修改为的名称
+        function download(url, filename) {
+
+            getBlob(url, function (blob) {
+                saveAs(blob, filename);
+            });
+
+        };
+
+        function getBlob(url, cb) {
+
+            var xhr = new XMLHttpRequest();
+
+            xhr.open('GET', url, true);
+
+            xhr.responseType = 'blob';
+
+            xhr.onload = function () {
+
+                if (xhr.status === 200) {
+
+                    cb(xhr.response);
+
+                }
+
+            };
+
+            xhr.send();
+
+        }
+
+        function saveAs(blob, filename) {
+
+            if (window.navigator.msSaveOrOpenBlob) {
+
+                navigator.msSaveBlob(blob, filename);
+
+            } else {
+
+                var link = document.createElement('a');
+
+                var body = document.querySelector('body');
+
+                link.href = window.URL.createObjectURL(blob);
+
+                link.download = filename;
+
+                // fix Firefox
+
+                link.style.display = 'none';
+
+                body.appendChild(link);
+
+                link.click();
+
+                body.removeChild(link);
+
+                window.URL.revokeObjectURL(link.href);
+
+            };
+
+        }
+    </script>
+</body>
+
+</html>

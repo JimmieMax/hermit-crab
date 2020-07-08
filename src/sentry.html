@@ -1,0 +1,32 @@
+<!--
+ * @Desc: 页面、组件说明
+ * @Author: Jimmie
+ * @Date: 2020-01-17 14:35:10
+ * @query: {string} p1  内容ID
+ * @props: {string} p1  数据源
+ * @event: {string} p1  des
+ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://browser.sentry-cdn.com/5.11.0/bundle.min.js"
+        integrity="sha384-jbFinqIbKkHNg+QL+yxB4VrBC0EAPTuaLGeRT0T+NfEV89YC6u1bKxHLwoo+/xxY" crossorigin="anonymous">
+        </script>
+    <script>
+        Sentry.init({
+            dsn: 'https://6482dce75b0f4ceeb1c0ef7387a9dc01@sentry.io/1885379',
+            environment: 'dev'
+        });
+        myUndefinedFunction();
+    </script>
+</body>
+
+</html>

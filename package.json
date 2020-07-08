@@ -15,5 +15,20 @@
   "bugs": {
     "url": "https://github.com/JimmieMax/hermit-crab/issues"
   },
-  "homepage": "https://github.com/JimmieMax/hermit-crab#readme"
+  "homepage": "https://github.com/JimmieMax/hermit-crab#readme",
+  "dependencies": {
+    "@jimmiemax/max-ui": "^0.1.0",
+    "babel-core": "^6.26.3",
+    "babel-plugin-transform-decorators": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "recast": "^0.18.1",
+    "vue": "^2.6.10",
+    "webpack": "^4.32.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.15.0",
+    "@typescript-eslint/parser": "^2.15.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.1.2"
+  }
 }

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div style="width:100px;height:100px;background:red">
+        <button id="targetButton">Test</button>
+        <a id="link" href="http://baidu.com">Link</a>
+    </div>
+    <script>
+        const targetButton = document.getElementById('targetButton')
+        document.addEventListener('click',($event)=>{
+            console.log('capture stage')
+            // $event.stopPropagation()
+        },true)
+        document.onclick = ($event)=>{
+            console.log('bubble stage')
+            if($event.target==targetButton){
+                alert('click in');
+            }else{
+                alert('click out');
+            }
+        }
+        document.getElementById('link').onclick = ($event)=>{
+            console.log('link here')
+            $event.preventDefault()
+        }
+    </script>
+</body>
+</html>
