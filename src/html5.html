@@ -1,0 +1,96 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-10-12 17:22:01
+ * @LastEditTime: 2020-10-19 15:40:02
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hermit-crab/src/html5.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script type="text/javascript">var jd_union_pid="3002832968";var jd_union_euid="";</script>
+    <script type="text/javascript" src="//ads-union.jd.com/static/js/union.js"></script>
+
+    <details>
+        <summary>Click Here to get the user details</summary>
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Location</th>
+                <th>Job</th>
+            </tr>
+            <tr contenteditable="true">
+                <td>1</td>
+                <td>Adam</td>
+                <td>Huston</td>
+                <td>UI/UX</td>
+            </tr>
+        </table>
+    </details>
+    <div>
+        <img src="./assets/1.jpg" width="500" height="500" alt="Circus" usemap="#circusmap">
+
+        <map name="circusmap">
+            <area shape="rect" coords="67,114,207,254" href="/src/picture.html">
+            <area shape="rect" coords="222,141,318, 256" href="/src/parallax-scrolling.html">
+        </map>
+    </div>
+    <p> Did you know, you can <mark>"Highlight something interesting"</mark> just with an HTML tag? </p>
+    <h2> Know data attribute </h2>
+    <div class="data-attribute" id="data-attr" data-custom-attr="You are just Awesome!">
+        I have a hidden secret!
+    </div>
+    <p id="msg"></p>
+    <button onclick="reveal()">Reveal</button>
+    <script>
+        function reveal() {
+            let dataDiv = document.getElementById('data-attr');
+            let value = dataDiv.dataset['customAttr'];
+            document.getElementById('msg').innerHTML = `<mark>${value}</mark>`;
+        }
+
+    </script>
+    <form oninput="x.value=parseInt(a.value) * parseInt(b.value)">
+        <input type="number" id="a" value="0">
+        * <input type="number" id="b" value="0">
+        = <output name="x" for="a b"></output>
+    </form>
+    <form action="" method="get">
+        <label for="fruit">Choose your fruit from the list:</label>
+        <input list="fruits" name="fruit" id="fruit">
+        <datalist id="fruits">
+            <option value="Apple">
+            <option value="Orange">
+            <option value="Banana">
+            <option value="Mango">
+            <option value="Avacado">
+        </datalist>
+        <input type="submit">
+    </form>
+    <form method="post">
+        <input type="range" name="range" min="0" max="100" step="1" value="" onchange="changeValue(event)" />
+    </form>
+    <div class="range">
+        <output id="output" name="result"> </output>
+    </div>
+    <label for="home">/home/atapas</label>
+    <meter id="home" value="4" min="0" max="10">2 out of 10</meter><br>
+
+    <label for="root">/root</label>
+    <meter id="root" value="0.6">60%</meter><br>
+    <label for="file">Downloading progress:</label>
+    <progress id="file" value="32" max="100"> 32% </progress>
+    <input type="color" onchange="showColor(event)">
+    <p id="colorMe">Color Me!</p>
+</body>
+
+</html>

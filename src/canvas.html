@@ -14,6 +14,13 @@
     <canvas id="canvas-1" width="300" height="300"></canvas>
     <canvas id="canvas-2" width="300" height="300"></canvas>
     <canvas id="canvas-3" width="300" height="300"></canvas>
+    <canvas id="canvas-4" width="300" height="300"></canvas>
+    <canvas id="canvas-5" width="300" height="300"></canvas>
+    <canvas id="canvas-6" width="300" height="300"></canvas>
+    <canvas id="canvas-7" width="300" height="300"></canvas>
+    <canvas id="canvas-8" width="300" height="300"></canvas>
+    <canvas id="canvas-9" width="300" height="300"></canvas>
+    <canvas id="canvas-10" width="300" height="300"></canvas>
     <script type="text/javascript">
         function draw() {
             var canvas = document.getElementById('canvas');
@@ -235,22 +242,182 @@
 
                 ctx.fillRect(0, 100, 150, 150);   // 使用默认设置绘制一个矩形
                 ctx.save();                  // 保存默认状态
-            
+
                 ctx.fillStyle = 'red'       // 在原有配置基础上对颜色做改变
                 ctx.fillRect(15, 115, 120, 120); // 使用新的设置绘制一个矩形
-            
+
                 ctx.save();                  // 保存当前状态
                 ctx.fillStyle = '#FFF'       // 再次改变颜色配置
                 ctx.fillRect(30, 130, 90, 90);   // 使用新的配置绘制一个矩形
-            
+
                 ctx.restore();               // 重新加载之前的颜色状态
                 ctx.fillRect(45, 145, 60, 60);   // 使用上一次的配置绘制一个矩形
-            
+
                 ctx.restore();               // 加载默认颜色配置
                 ctx.fillRect(60, 160, 30, 30);   // 使用加载的配置绘制一个矩形
             }
         }
         draw3();
+        function draw4() {
+            var canvas = document.getElementById('canvas-4');
+            if (!canvas.getContext) return;
+            var ctx = canvas.getContext("2d");
+            ctx.save(); //保存坐原点平移之前的状态
+            ctx.translate(100, 100);
+            ctx.strokeRect(0, 0, 100, 100)
+            ctx.restore(); //恢复到最初状态
+            ctx.translate(220, 220);
+            ctx.fillRect(0, 0, 100, 100)
+        }
+        draw4();
+        function draw5() {
+            var canvas = document.getElementById('canvas-5');
+            if (!canvas.getContext) return;
+            var ctx = canvas.getContext("2d");
+
+            ctx.fillStyle = "red";
+            ctx.save();
+
+            ctx.translate(100, 100);
+            ctx.rotate(Math.PI / 180 * 45);
+            ctx.fillStyle = "blue";
+            ctx.fillRect(0, 0, 100, 100);
+            ctx.restore();
+
+            ctx.save();
+            ctx.translate(0, 0);
+            ctx.scale(2, 2)
+            ctx.fillRect(0, 0, 50, 50)
+            ctx.restore();
+        }
+        draw5();
+        function draw6() {
+            var canvas = document.getElementById('canvas-6');
+            if (!canvas.getContext) return;
+            var ctx = canvas.getContext("2d");
+            ctx.transform(1, 1, 0, 1, 0, 0);
+            ctx.fillRect(0, 0, 100, 100);
+        }
+        draw6();
+        function draw7() {
+            var canvas = document.getElementById('canvas-7');
+            if (!canvas.getContext) return;
+            var ctx = canvas.getContext("2d");
+
+            ctx.fillStyle = "blue";
+            ctx.fillRect(0, 0, 100, 100);
+            //全局合成操作
+            // ctx.globalCompositeOperation = "source-over"; 
+            // ctx.globalCompositeOperation = "source-in";
+            // ctx.globalCompositeOperation = "source-out";
+            // ctx.globalCompositeOperation = "source-atop";
+            // ctx.globalCompositeOperation = "destination-over";
+            // ctx.globalCompositeOperation = "destination-in";
+            // ctx.globalCompositeOperation = "destination-out";
+            // ctx.globalCompositeOperation = "lighter";
+            // ctx.globalCompositeOperation = "darken";
+            // ctx.globalCompositeOperation = "lighten";
+            // ctx.globalCompositeOperation = "xor";
+            ctx.globalCompositeOperation = "copy";
+            ctx.fillStyle = "red";
+            ctx.fillRect(50, 50, 100, 100);
+        }
+        draw7();
+        function draw8() {
+            var canvas = document.getElementById('canvas-8');
+            if (!canvas.getContext) return;
+            var ctx = canvas.getContext("2d");
+
+            ctx.beginPath();
+            ctx.arc(20, 20, 100, 0, Math.PI * 2);
+            ctx.clip();
+
+            ctx.fillStyle = "pink";
+            ctx.fillRect(20, 20, 100, 100);
+        }
+        draw8();
+
+        init();
+
+        function init() {
+            let canvas = document.querySelector("#canvas-9");
+            let ctx = canvas.getContext("2d");
+            draw9(ctx);
+        }
+
+        function draw9(ctx) {
+            requestAnimationFrame(function step() {
+                drawDial(ctx); //绘制表盘
+                drawAllHands(ctx); //绘制时分秒针
+                requestAnimationFrame(step);
+            });
+        }
+        /*绘制时分秒针*/
+        function drawAllHands(ctx) {
+            let time = new Date();
+
+            let s = time.getSeconds();
+            let m = time.getMinutes();
+            let h = time.getHours();
+
+            let pi = Math.PI;
+            let secondAngle = pi / 180 * 6 * s;  //计算出来s针的弧度
+            let minuteAngle = pi / 180 * 6 * m + secondAngle / 60;  //计算出来分针的弧度
+            let hourAngle = pi / 180 * 30 * h + minuteAngle / 12;  //计算出来时针的弧度
+
+            drawHand(hourAngle, 60, 6, "red", ctx);  //绘制时针
+            drawHand(minuteAngle, 106, 4, "green", ctx);  //绘制分针
+            drawHand(secondAngle, 129, 2, "blue", ctx);  //绘制秒针
+        }
+        /*绘制时针、或分针、或秒针
+         * 参数1：要绘制的针的角度
+         * 参数2：要绘制的针的长度
+         * 参数3：要绘制的针的宽度
+         * 参数4：要绘制的针的颜色
+         * 参数4：ctx
+         * */
+        function drawHand(angle, len, width, color, ctx) {
+            ctx.save();
+            ctx.translate(150, 150); //把坐标轴的原点平移到原来的中心
+            ctx.rotate(-Math.PI / 2 + angle);  //旋转坐标轴。 x轴就是针的角度
+            ctx.beginPath();
+            ctx.moveTo(-4, 0);
+            ctx.lineTo(len, 0);  // 沿着x轴绘制针
+            ctx.lineWidth = width;
+            ctx.strokeStyle = color;
+            ctx.lineCap = "round";
+            ctx.stroke();
+            ctx.closePath();
+            ctx.restore();
+        }
+
+        /*绘制表盘*/
+        function drawDial(ctx) {
+            let pi = Math.PI;
+
+            ctx.clearRect(0, 0, 300, 300); //清除所有内容
+            ctx.save();
+
+            ctx.translate(150, 150); //一定坐标原点到原来的中心
+            ctx.beginPath();
+            ctx.arc(0, 0, 148, 0, 2 * pi); //绘制圆周
+            ctx.stroke();
+            ctx.closePath();
+
+            for (let i = 0; i < 60; i++) {//绘制刻度。
+                ctx.save();
+                ctx.rotate(-pi / 2 + i * pi / 30);  //旋转坐标轴。坐标轴x的正方形从 向上开始算起
+                ctx.beginPath();
+                ctx.moveTo(110, 0);
+                ctx.lineTo(140, 0);
+                ctx.lineWidth = i % 5 ? 2 : 4;
+                ctx.strokeStyle = i % 5 ? "blue" : "red";
+                ctx.stroke();
+                ctx.closePath();
+                ctx.restore();
+            }
+            ctx.restore();
+        }
     </script>
 </body>
 
