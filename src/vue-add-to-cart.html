@@ -1,0 +1,212 @@
+<!--
+ * @Author: Jimmie
+ * @Date: 2019-07-26 10:59:09
+ * @LastEditTime: 2020-10-19 17:02:40
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /hermit-crab/src/vue.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{message}}
+        <img class="flycart" src="./assets/1.jpg" @click="init" />
+        <img class="flycart" :hidden="cartHidden" src="./assets/1.jpg"
+            :style="{position: 'absolute', left: bus_x + 'px', top: bus_y + 'px', transform:`scale(${scale})`}" />
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                message: 'Hello Vue!',
+                start: {},
+                current: { x: '', y: '' },
+                cartHidden: true,
+                bus_x: 0,
+                bus_y: 0,
+                scale: 1,
+                end: {
+                    x: 375 * 4 / 5,
+                    y: 600
+                }
+            },
+            mounted() {
+                // this.end = {
+                //     x: 375 * 4 / 5,
+                //     y: 600
+                // }
+                // /* 获取屏幕宽高 */
+                // const windowWidth = window.innerWidth
+                // const windowHeight = window.innerHeight
+                // /* 购物车所在的位置 */
+                // this.end['y'] = windowHeight - 20
+                // this.end['x'] = windowWidth * 4 / 5 - 50
+                // this.startCart()
+            },
+            methods: {
+                init() {
+                    this.end = {
+                        x: 375 * 4 / 5,
+                        y: 600
+                    }
+                    /* 获取屏幕宽高 */
+                    const windowWidth = window.innerWidth
+                    const windowHeight = window.innerHeight
+                    /* 购物车所在的位置 */
+                    this.end['y'] = windowHeight - 20
+                    this.end['x'] = windowWidth * 4 / 5 - 50
+                    this.startCart()
+                },
+                flycart(startPoint, endPoint, point, h = 0, hclientX) {
+                    /* 
+                    设置startPoint 为(0,0)点 , 此抛物线经过(0,0)点 ，可以推到出模型关系式 y =  ax^2 + bx 或者 y = ax^ 2
+                    1 当存在 h 的情况，抛物线会y轴向上偏移 h, 此时的关系式 y = ax^2 + bx
+                    2 当不存在h 的情况 ，抛物线startPoint为顶点， 此时关系式 y = ax^2 
+                    */
+
+                    /* 参数校验 */
+                    function Validityparameter() {
+                        let isOkey = true
+                        Array.isArray(startPoint) && startPoint.length !== 2 && (isOkey = false)
+                        Array.isArray(endPoint) && endPoint.length !== 2 && (isOkey = false)
+                            (point.constructor !== Number) && (isOkey = false)
+                        return isOkey
+                    }
+
+                    /* 参数验证 */
+                    if (!Validityparameter()) {
+                        return []
+                    }
+
+                    /* A点横坐标 */
+                    const xA = 0
+                    /* A点纵坐标 */
+                    const yA = 0
+                    /* x轴偏移量 */
+                    const offsetX = startPoint[0]
+                    /* y轴偏移量 */
+                    const offsetY = startPoint[1]
+                    /* B点横坐标 */
+                    const xB = endPoint[0] - offsetX
+                    /* B纵坐标 */
+                    const yB = endPoint[1] - offsetY
+
+                    /* 根据B点坐标和最大高度h求系数a,b 参数*/
+                    let b = 0
+                    let a = 0
+
+                    /* 计算系数 a ,b */
+                    function handerComputer() {
+                        if (h < 10) {
+                            a = yB / Math.pow(xB, 2)
+                        } else {
+                            /* 因为一般购物车的情况都是向下，实际上我们购物车的坐标系是反向的，所以我们这里要把h 设置成负值 */
+                            h = -h
+                            /* 一元二次求解a,b ，现在知道一点  ( xB , yB ) 另外一点 （ maxHx，h ）  */
+                            /* 有效达到最高点时候的x坐标 */
+                            const effectMaHx = hclientX && Math.abs(hclientX - offsetX) > 0 && Math.abs(hclientX - offsetX) < Math.abs(xB)
+                            /* 如果hclientX不满足要求，则选A , B 中点为   */
+                            let maxHx = effectMaHx ? (hclientX - offsetX) : (xB + xA) / 2
+                            /* 已知两点 求 a , b值  根据解方程式解得 y = ax^2 + bx  */
+                            a = ((yB / xB) - (h / maxHx)) / (xB - maxHx)
+                            /* 将 a 带入其中一个求解 b */
+                            b = (yB - a * Math.pow(xB, 2)) / xB
+                        }
+                    }
+
+
+                    /* 轨迹数组 */
+                    const travelList = []
+                    /* x 均等分 */
+                    const averageX = (xB - xA) / point
+
+                    /* 处理直线运动 */
+                    function handerLinearMotion(type) {
+                        if (type === 'X') {
+                            const averageY = (yB - yA) / point
+                            for (let i = 1; i <= point; i++) {
+                                travelList.push([offsetX, i * averageY + offsetY])
+                            }
+                        } else {
+                            for (let i = 1; i <= point; i++) {
+                                travelList.push([offsetX + i * averageX, offsetY])
+                            }
+                        }
+                        return travelList
+                    }
+
+                    /* 当 xB的绝对值小于10的情况，我们看作Y轴直线运功    */
+                    if (Math.abs(xB) < 10) {
+                        return handerLinearMotion('X')
+                    }
+                    /*当 yB的绝对值小于10的情况，我们看作x轴直线运功  */
+                    if (Math.abs(yB) < 10) {
+                        return handerLinearMotion('Y')
+                    }
+
+                    handerComputer()
+                    /* 绘制路径 */
+                    for (let i = 1; i <= point; i++) {
+                        const currentX = averageX * i
+                        const currentY = Math.pow(currentX, 2) * a + b * currentX - yA
+                        travelList.push([currentX + offsetX, currentY + offsetY])
+                    }
+
+                    return travelList
+                },
+                startCart() {
+                    /* 开启购物车 */
+                    /* this.start 储存起始点 clientY clientY  ,this.end储存最终点 clientX clientY*/
+                    this.start = {}
+                    this.start['x'] = this.current['x']
+                    this.start['y'] = this.current['y']
+                    const travelList = this.flycart([this.start['x'], this.start['y']], [this.end['x'], this.end['y']], 25, 50)
+                    this.startAnimate(travelList)
+                },
+                startAnimate(travelList) {
+                    let index = 0
+                    this.cartHidden = false;
+                    this.bus_x = this.start['x'];
+                    this.bus_y = this.start['y'];
+                    if (travelList.length === 0) return
+                    this.timer = setInterval(() => {
+                        index++
+                        const currentPoint = travelList.shift()
+                        this.bus_x = currentPoint[0];
+                        this.bus_y = currentPoint[1];
+                        this.scale = 1 - index / 25;
+                        if (travelList.length === 0) {
+                            clearInterval(this.timer)
+                            // this.triggerEvent('close')
+                        }
+                    }, 33)
+                    // const render = () => {
+                    //     index++
+                    //     const currentPoint = travelList.shift()
+                    //     this.bus_x = currentPoint[0];
+                    //     this.bus_y = currentPoint[1];
+                    //     this.scale = 1 - index / 25;
+                    //     if (travelList.length > 0) {
+                    //         requestAnimationFrame(render)
+                    //     }
+                    // }
+                    // requestAnimationFrame(render)
+                }
+
+            }
+        })
+    </script>
+</body>
+
+</html>
