@@ -183,12 +183,6 @@
                 return $('#area').html()
             }
 
-            //渲染
-            visibleHtml() {
-                console.log(this.exportHtml())
-                $('#visible').html(this.exportHtml())
-            }
-
         }
     </script>
     <style>
@@ -344,18 +338,18 @@
         let editor = new Editor('#box')
         editor.createDom()
 
+        //渲染
+        function visibleHtml() {
+            console.log(editor.exportHtml())
+            $('#visible').html(editor.exportHtml())
+        }
+
         //获取编辑文本
         function exportHtml() {
             console.log('获取编辑文本')
             let html = editor.exportHtml()
             $('#innerhtml').text(html)
             console.log(html);
-        }
-
-        //渲染文本
-        function visibleHtml() {
-            // console.log('渲染文本')
-            editor.visibleHtml()
         }
 
     </script>
