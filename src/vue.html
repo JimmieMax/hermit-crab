@@ -18,10 +18,9 @@
 
 <body>
     <div id="app">
-        {{message}}
-        <img class="flycart" src="./assets/1.jpg" @click="init" />
-        <img class="flycart" :hidden="cartHidden" src="./assets/1.jpg"
-            :style="{position: 'absolute', left: bus_x + 'px', top: bus_y + 'px', transform:`scale(${scale})`}" />
+        {{message}},,,
+        {{aaa.ddd}},,
+        {{arr}}
     </div>
     <!-- 开发环境版本，包含了有帮助的命令行警告 -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -30,6 +29,8 @@
             el: '#app',
             data: {
                 message: 'Hello Vue!',
+                aaa: {},
+                arr: [],
                 start: {},
                 current: { x: '', y: '' },
                 cartHidden: true,
@@ -42,6 +43,8 @@
                 }
             },
             mounted() {
+                this.aaa.ddd = 555;
+                this.arr[0] = 555;
                 // this.end = {
                 //     x: 375 * 4 / 5,
                 //     y: 600
